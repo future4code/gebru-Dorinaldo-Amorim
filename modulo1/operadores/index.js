@@ -50,7 +50,7 @@ let segundoNumero = nember(prompt("Digite outro numero!"))
 
 desta forma os valores serão somados e impressos.
 
-
+*/
 //exercicio de código:
 
 // 1:
@@ -65,9 +65,9 @@ let numeropar = Number(prompt("digite um numero par"))
 
 console.log("diferença de idade " ,diferenca)
 
-/*
-por padrão todo numero par dividido por 2 reulta em um valor 0, já se 
-adionarmos um valor impar teremos um resultado diferente de 0.
+
+// por padrão todo numero par dividido por 2 reulta em um valor 0, já se 
+// adionarmos um valor impar teremos um resultado diferente de 0.
 
 
 // 3:
@@ -108,7 +108,7 @@ const quilowat = 280
 const desconto = quilowat * 0.15
 console.log("Valor de consumo de energia : R$" , (quilowat * 0.5))
 console.log( "Valor com desconto : R$" , (quilowat * 0.5) - desconto)
-*/
+
 
 // part 3.
 
