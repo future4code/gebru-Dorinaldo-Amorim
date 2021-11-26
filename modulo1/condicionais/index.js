@@ -103,7 +103,7 @@
 // se ele/ela pode dirigir (apenas maiores de idade)
 
 
-const idadeUsuario = + prompt('digite dua idade :')
+const idadeUsuario = + prompt('digite sua idade :')
 
 
 switch(idadeUsuario> +18){
@@ -203,5 +203,209 @@ if (genero1 === filmePreferencia && preco1 <= +15){
         console.log("Escolha outro filme :(")
 
          }
-////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////
+
+
+
+const jogo = {
+    
+   
+    nomeCompleto : prompt( 'digite seu nome :'),
+    tipo : prompt( 'digite IN para jogo internacional ou DO para domestico  :').toUpperCase(),
+    etapaDoJogo : prompt('digite SF para semi-final, DT para decisão de terceiro lugar ou FI para final :').toUpperCase(),
+    categoria : +prompt( 'digite o número entre 1 e 4 o que indica a categoria :'),
+    quantidadeIngresso : +prompt( 'digite a quantidade de ingressos :')
+    
+    }
+    
+    
+    const dadosParaOJogo = (objeto) => {
+    
+        console.log('---Dados da compra---')
+    
+        console.log(`nome do cliente : ${objeto.nomeCompleto}`)
+    
+        switch (objeto.tipo) {
+            case 'IN':
+                console.log('tipo do jogo : internacional')
+                break
+    
+                case 'DO':
+                    console.log('tipo do jogo : domestico')
+                    break
+    
+                    default :
+                    console.log('tipo não definido !')
+        }
+    
+    
+        switch (objeto.etapaDoJogo) {
+            case 'SF' :
+                console.log('Etapa do jogo: semi-final')
+                break
+    
+                case 'DT':
+                console.log('Etapa do jogo: desisão de terceiro lugar ')
+                break
+    
+                case 'FI' :
+                    console.log('Etapa do jogo: final')
+                    break
+                    
+                    default :
+                    console.log('não definido !')
+                    break
+        }
+    
+        console.log(`Categoria: ${objeto.categoria}`)
+    
+        console.log(`Quantidade de Ingressos:  ${objeto.quantidadeIngresso} ingressos`)
+    
+        console.log(`---Valores---`)
+    
+        if (objeto.tipo === 'DO') {
+    
+                 if (objeto.etapaDoJogo === 'SF'){
+    
+                     if (objeto.categoria === +1) {
+                        console.log(`Valor do ingresso:  R$ 1.320,00`)
+                            console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 1320}` )
+                     
+                        } else if (objeto.categoria === +2 ){
+                            console.log(`Valor do ingresso:  R$ 880,00`)
+                            console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 880}` )
+                        
+                        } else if (objeto.categoria === +3){
+                            console.log(`Valor do ingresso:  R$ 550,00`)
+                            console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 550}` )
+                        
+                        } else if (objeto.categoria === +4) {
+                            console.log(`Valor do ingresso:  R$ 220,00`)
+                            console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 220}` )
+                        }
+                
+                
+                    } else if(objeto.etapaDoJogo === 'DT') {
+    
+                     
+                        if (objeto.categoria === +1) {
+                            console.log(`Valor do ingresso:  R$ 660,0`)
+                            console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 660}` )
+                     
+                        } else if (objeto.categoria === +2 ){
+                            console.log(`Valor do ingresso:  R$ 440,00`)
+                            console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 440}` )
+                        
+                        } else if (objeto.categoria === +3){
+                            console.log(`Valor do ingresso:  R$ 330,00`)
+                            console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 330}` )
+                        
+                        } else if (objeto.categoria === +4) {
+                            console.log(`Valor do ingresso:  R$ 170,00`)
+                            console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 170}` )
+                        }
+                
+    
+                    }  else if(objeto.etapaDoJogo === 'FI') {
+    
+                     
+                        if (objeto.categoria === +1) {
+                            console.log(`Valor do ingresso:  R$ 1.980,00`)
+                            console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 1980}` )
+                     
+                        } else if (objeto.categoria === +2 ){
+                            console.log(`Valor do ingresso:  R$ 1.320,00`)
+                            console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 1320}` )
+                        
+                        } else if (objeto.categoria === +3){
+                            console.log(`Valor do ingresso:  R$ 880,00`)
+                            console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 880}` )
+                        
+                        } else if (objeto.categoria === +4) {
+                            console.log(`Valor do ingresso:  R$ 330,00`)
+                            console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 330}` )
+                        }
+                
+    
+                    }
+    
+    
+        } else  if (objeto.tipo === 'IN') {
+    
+            if (objeto.etapaDoJogo === 'SF'){
+    
+                if (objeto.categoria === +1) {
+                    console.log(`Valor do ingresso:  R$ ${1320 *4.10}`)
+                       console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 1320 *4.10}` )
+                
+                   } else if (objeto.categoria === +2 ){
+                    console.log(`Valor do ingresso:  R$ ${880 *4.10}`)
+                       console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 880 *4.10}` )
+                   
+                   } else if (objeto.categoria === +3){
+                    console.log(`Valor do ingresso:  R$ ${550 *4.10}`)
+                       console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 550 *4.10}` )
+                   
+                   } else if (objeto.categoria === +4) {
+                    console.log(`Valor do ingresso:  R$ ${220 *4.10}`)
+                       console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 220 *4.10}` )
+                   }
+           
+           
+               } else if(objeto.etapaDoJogo === 'DT') {
+    
+                
+                   if (objeto.categoria === +1) {
+                    console.log(`Valor do ingresso:  R$ ${660 *4.10}`)
+                       console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 660 *4.10}` )
+                
+                   } else if (objeto.categoria === +2 ){
+                    console.log(`Valor do ingresso:  R$ ${440 *4.10}`)
+                       console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 440 *4.10}` )
+                   
+                   } else if (objeto.categoria === +3){
+                       console.log(`Valor do ingresso:  R$ ${330 *4.10}`)
+                       console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 330 *4.10}` )
+                   
+                   } else if (objeto.categoria === +4) {
+                       console.log(`Valor do ingresso:  R$ ${170 *4.10}`)
+                       console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 170 *4.10}` )
+                   }
+           
+    
+               }  else if(objeto.etapaDoJogo === 'FI') {
+    
+                
+                   if (objeto.categoria === +1) {
+                       console.log(`Valor do ingresso:  R$ ${1980 *4.10}`)
+                       console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 1980 *4.10}` )
+                
+                   } else if (objeto.categoria === +2 ){
+                       console.log(`Valor do ingresso:  R$ ${1320 *4.10}`)
+                       console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 1320 *4.10}` )
+                   
+                   } else if (objeto.categoria === +3){
+                       console.log(`Valor do ingresso:  R$ ${880 *4.10}`)
+                       console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 880 *4.10}` )
+                   
+                   } else if (objeto.categoria === +4) {
+                       console.log(`Valor do ingresso:  R$ ${330 *4.10}`)
+                       console.log(`valor do ingresso : R$ ${objeto.quantidadeIngresso * 330 *4.10}` )
+                   }
+           
+    
+               }
+    
+    
+    } 
+    
+    
+    
+    
+    
+    }
+    
+    dadosParaOJogo(jogo)
 
