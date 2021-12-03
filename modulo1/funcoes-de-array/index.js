@@ -139,7 +139,7 @@ console.log(nomeProduto)
 
 
 
-const desconto = produtos.map(item => {
+const desconto = produtos.map(item => {  //novo objeto
    const objeto = {
        nome: item.nome,
        preco: item.preco * 0.95
@@ -151,7 +151,7 @@ console.log('a' ,desconto)
 
 //C)......................
 
-const bebidas = produtos.filter( item => {
+const bebidas = produtos.filter( item => {  //só bebidas
     return item.categoria === "Bebidas"
 }
 
@@ -161,13 +161,14 @@ console.log(bebidas)
 //D)........................
 
 
-const ype = produtos.filter( item => {
+const ype = produtos.filter( item => {  //produtos ype
     return item.nome.includes('Ypê')
 }
 
 )
 console.log(ype)
 
+//E)........
 
 
 const produtosYpe = ype.map(item => {
