@@ -69,17 +69,17 @@ console.log('*** ♣️ ♥️ ♦️ ♠️ ***')
  if (somaUsuario === somaComputador ){
    console.log(`Usuário - cartas: ${carta.texto} ${carta2.texto}  - pontuação ${somaUsuario}`)
    console.log(`Computador - cartas: ${carta3.texto} ${carta4.texto}  - pontuação ${somaComputador}`)
-   console.log("Empate!") 
+   console.log("(( Empate! ))") 
  
    }else if ( somaUsuario > somaComputador) {
        console.log(`Usuário - cartas: ${carta.texto} ${carta2.texto}   - pontuação ${somaUsuario}`)
        console.log(`Computador - cartas: ${carta3.texto} ${carta4.texto}  - pontuação ${somaComputador}`)
-       console.log("O usuário ganhou!") 
+       console.log("(( O usuário ganhou! ))") 
 
         } else  {
              console.log(`Usuário - cartas: ${carta.texto} ${carta2.texto}  - pontuação ${somaUsuario}`)
              console.log(`Computador - cartas: ${carta3.texto} ${carta4.texto}  - pontuação ${somaComputador}`)
-             console.log("O computador ganhou!") 
+             console.log("(( O computador ganhou! ))") 
       
        }
 
