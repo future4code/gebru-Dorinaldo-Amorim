@@ -1,0 +1,27 @@
+1. Primeiro passo:
+   É o momento em que se identifica a ideia, o proposito e o objetivo do projeto.
+
+2. Segundo passo:
+   É o momento em que identificamos as possíveis variaveis atraves dos substantivos, e a possíveis
+   funções ou ações baseados nos verbos propostos.
+
+3. terceiro passo:
+   É a fase que elaboramos as possíveis estruturas de entrada de informações e como se dará a saida 
+   destas informações.
+
+4. Quarto passo:
+   É o momento de descrever mentalmente ou através de fluxograma a estrutura do projeto
+
+5. Quinto passo:
+   É a hora de meter a mão na massa, começamos a criar as primeiras estruturas de código na qual poderar
+   ser melhorado ou simplificado futuramente.
+
+6. Sexto passo:
+   É o passo em que começamos a testar as saídas de informações e procuramos possíveis erros.
+
+7. Sétimo passo:
+   É o momento de revisar o código, para garantir bons nomes as variaveis e funções, mas também é o 
+   de organisamos o posicionamento das funções, variaveis e toda a estruturado do código, como identações 
+   observações em forma de comentário. 
+      
+           
