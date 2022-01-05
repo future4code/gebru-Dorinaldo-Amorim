@@ -26,7 +26,7 @@ button:focus {
 }
 
 img {
-    width: 40px;
+    width: 50px;
 }
 
 div>p:first-child {
@@ -118,8 +118,12 @@ td button {
 .container-do-search {
     margin-top: 20px;
     height: 100px;
+
 }
 
+img.container-do-search{
+    width: 200px;
+}
 
 #back-button {
     background-color: white;
