@@ -1,0 +1,12 @@
+
+
+
+
+.conteiner {
+    display: flex;
+   background-color: bisque;
+}
+
+nav{
+    text-align: right;
+}
