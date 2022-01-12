@@ -1,0 +1,72 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    background-color: orangered;
+   height: 50px;
+
+}
+
+#busca{
+    width: 90px;
+}
+
+
+
+/*/////////////////////////////////////////////////////////////////////////////////*/
+
+
+main{
+    display: grid;
+  
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 15px;
+    column-gap: 15px;
+    padding: 70px 25px;
+    height: 80vh;
+    background-color: rgb(213, 228, 243);
+ 
+}
+
+.video{
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+
+}
+
+.imagens{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 2px 2px 5px green;
+}
+
+.foto{
+    width: 90%;
+}
+p{
+    font-size: 25px;
+    padding: 15px;
+    
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////*/
+
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    background-color: slategrey;
+    height: 150px;
+
+} 
