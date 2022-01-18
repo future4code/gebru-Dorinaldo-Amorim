@@ -38,7 +38,7 @@ main{
 .video{
     display: flex;
     flex-direction: column;
-    height: 80%;
+ 
 
 }
 
@@ -70,3 +70,21 @@ footer{
     height: 150px;
 
 } 
+
+/*/////////////////////////////////////////////////////////////////////////*/
+
+
+@media screen and (max-device-width : 420px){
+    main{
+        display: grid;
+  
+        grid-template-columns: 1fr;
+        row-gap: 15px;
+        column-gap: 15px;
+        padding: 70px 25px;
+        height: 100%;
+        background-color: rgb(213, 228, 243);
+     
+    }
+
+}
