@@ -4,7 +4,7 @@ import CardGrande from './components/CardGrande/CardGrande';
 import ImagemButton from './components/ImagemButton/ImagemButton';
 import CardPequeno from './components/CardPequeno/CardPequeno';
 import CardPequeno2 from './components/CardPequeno2/CardPequeno2';
-
+import myfoto from './img/dori.jpg';
 
 
 
@@ -15,7 +15,7 @@ function App() {
       <div className="page-section-container">
         <h2>Dados pessoais</h2>
         <CardGrande 
-          imagem='https://st3.depositphotos.com/1007566/13383/v/1600/depositphotos_133832928-stock-illustration-student-graduation-uniform-icon.jpg'
+          imagem={myfoto}
           nome="Dorinaldo S Amorim" 
           descricao="Oi, eu sou o Dorinaldo Amorim. Sou aluno da Labenu. Adoro programção, computação e tudo relacionado a Ti. Atualmente ainda não estou trabalhando nesta área, sou da área de saúde, más com o objetivo de em breve migrar para programação."
         />
@@ -49,13 +49,13 @@ function App() {
       <div className="page-section-container">
         <h2>Experiências profissionais</h2>
         <CardGrande 
-          imagem="https://st3.depositphotos.com/1007566/13383/v/1600/depositphotos_133832928-stock-illustration-student-graduation-uniform-icon.jpg" 
+          imagem={myfoto} 
           nome="Dorinaldo S Amorim" 
           descricao="Trabalho a 12 anos a área de saúde, especificamente no setor odontológico, mas gracuado em Análise e desenvolvimento de sistemas." 
         />
         
         <CardGrande 
-           imagem="https://st3.depositphotos.com/1007566/13383/v/1600/depositphotos_133832928-stock-illustration-student-graduation-uniform-icon.jpg" 
+           imagem={myfoto} 
           nome="Dori" 
           descricao="Apontando defeitos            ??." 
         />
