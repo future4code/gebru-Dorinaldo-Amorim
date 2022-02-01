@@ -1,0 +1,16 @@
+
+
+
+.mensagens{
+    padding-right: 40%;
+text-align: left;
+padding-left: 2%;
+}
+
+#pconfig{
+    color: honeydew;
+    background-color: green;
+   padding-left: 4%;
+    border: 1px solid black;
+    border-radius: 20px;
+}
