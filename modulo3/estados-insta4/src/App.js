@@ -14,11 +14,90 @@ const MainContainer = styled.div`
 `
 
 class App extends React.Component {
+state= {
+  postUsuario: [
+    {
+    nomeUsuario: '',
+    fotoUsuario: '',
+    fotoPost: ''
+  }
+],
+
+  valorInputNomeUsuario: "",
+  valorInputFotoUsuario: "",
+  valorInputFotoPost: ""
+};
+
+onChangeInputNomeUsuario = (event)=> { this.setState({valorInputNomeUsuario : event.target.value})   };
+onChangeInputFotoUsuario = (event)=> { this.setState({valorInputFotoUsuario: event.target.value})   };
+onChangeInputFotoPost = (event)=> { this.setState({valorInputFotoPost: event.target.value})   };
+
+addPost= ()=> {
+
+  const newPost = {
+    nomeUsuario: this.state.valorInputNomeUsuario,
+    fotoUsuario: this.state.valorInputFotoUsuario,
+    fotoPost: this.state.valorInputFotoPost
+
+  };
+
+
+
+const MeuPost = [...this.state.postUsuario, newPost];
+this.setState({postUsuario: MeuPost});
+this.setState({ valorInputNomeUsuario: ""});
+this.setState({valorInputFotoUsuario: ""});
+this.setState({ valorInputFotoPost: ""})
+}
+
+
   render() {
+
+const listaPost = this.state.postUsuario.map((posty) => {
+  return (
+<Post
+   nomeUsuario={posty.nomeUsuario}
+   fotoUsuario={posty.fotoUsuario}
+   fotoPost={posty.fotoPost}
+/>
+ 
+   )
+});
+
+
+
+
+
+
     return (
       <MainContainer>
 
-        <Post
+
+        <input
+        value={this.state.valorInputNomeUsuario}
+        onChange={this.onChangeInputNomeUsuario}
+        placeholder={'name'}
+        />
+         <input
+        value={this.state.valorInputFotoUsuario}
+        onChange={this.onChangeInputFotoUsuario}
+        placeholder={'fotoUsu'}
+        />
+         <input
+        value={this.state.valorInputFotoPost}
+        onChange={this.onChangeInputFotoPost}
+        placeholder={'fotoPOst'}
+        />
+
+        <button onClick={this.addPost}>enviar</button>
+
+        {listaPost}
+
+
+
+
+        
+//         <Post
           nomeUsuario={'paulinha'}
           fotoUsuario={'https://picsum.photos/50/50'}
           fotoPost={'https://picsum.photos/200/150'}
@@ -34,8 +113,9 @@ class App extends React.Component {
           fotoUsuario={Fotod}
           fotoPost={Fotod1}
         />
-
-
+     
+     
+     
 
 
 
@@ -46,7 +126,7 @@ class App extends React.Component {
 
 
       </MainContainer>
-      
+     
     );
   }
 }
