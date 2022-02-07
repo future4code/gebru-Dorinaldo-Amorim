@@ -1,46 +1,88 @@
 import styled from "styled-components";
 import React from "react";
-
+import Foto from './img/logo mensagem.png';
 /**--------------------------styled--------------------------------------------- */
 
 
-/**====================================================================================================== */
+
 
 const MainContainer = styled.div`
+height: 100vh;
    display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   background-color: #282c34;
-  padding: 0 ; 
-  margin: 10px auto; 
+  padding: 0 10vw;
+   margin:  auto; 
+   word-wrap: break-word;
 `
+
+const Header = styled.header`
+height: 5vh;
+text-align: center;
+background-color: darkgreen;
+color: whitesmoke;
+`
+
 const Main = styled.main`
-height: 95vh;
+ text-align: center;
+height: 85vh;
   border: 1px solid black; 
-  background-color: rgb(192, 248, 229);
-  padding: 0 15%;
-  border-radius: 10px;
+  background-color: 	#FAEBD7;
+  padding: 2vh 2vw 0;
+  border-radius: 5px;
+  word-wrap: break-word;
+  overflow-x: scroll;
+  overflow-x: hidden;
+ 
 `
 
 const Footer = styled.footer`
-  border-radius: 10px;
-  background-color: rgb(168, 243, 212);
+display: grid;
+grid-template-columns: 30% 60% 10%;
+
+height: 5%;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: #A9A9A9;
     border: 1px solid black;
-  padding: 0 2vw;
-  padding-right: 3vw;
- display: flex;
+  padding: 0.5vh 2vw;
+  padding-right: 2vw;
+  column-gap: 1vw;
+ 
  `
 
 const TeacherCard = styled.div`
+
+text-align: left;
+background-color: rgb(36, 109, 67);
   display: flex;
   flex-direction: column;
   border: 1px solid gray;
-  margin: 8px auto;
+  margin-left: 38%;
+  margin-right: 2%;
+  margin-top: 2%;
+   padding: 0 8px;
+  width: 60%;
+  border-radius: 15px;
+  word-wrap: break-word;
+  color: whitesmoke;
+  position: relative;
+`
+const TeacherCard2 = styled.div`
+text-align: left;
+background-color: rgb(83, 82, 82);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  margin: 2% ;
   padding: 0 8px;
-  justify-content: space-between;
-  align-items: center;
-  width: 250px;
+   width: 60%;
+  border-radius: 15px;
+  word-wrap: break-word;
+  color: whitesmoke;
+  position: relative;
 `
 
 const AgeText = styled.p`
@@ -49,24 +91,63 @@ const AgeText = styled.p`
 
 const Input = styled.input`
   border-radius: 10px;
-  
+    font-size: 140%;
   `
+ 
   const Titulo = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 0.5fr 4fr;
   align-items: center;
   `
-  const Imag = styled.ims`
-  `
-  const Imag2 = styled.ims`
-  `
+    const Titulo2 = styled.div`
+    display: grid;
+    grid-template-columns:  4fr 0.5fr;
+    align-items: center;
+    `
+      const Titulo3 = styled.div`
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      `
+ const Botao = styled.button`
+  border-radius: 15px;
+  
+ `
+  const Botao2 = styled.button`
+  border-radius: 10px;
+  color: red;
+  opacity : 0.5;
+ `
+
+ const Afeter1 = styled.div`
+  &:after {
+	content: '';
+	border: 15px solid transparent;
+	border-top-color: rgb(36, 109, 67);
+  position: absolute;
+top: 0px;
+right: -15px;
+}
+
+ `
+ const Afeter2 = styled.div`
+ &:after {
+	content: '';
+	border: 15px solid transparent;
+	border-top-color: rgb(83, 82, 82);
+  position: absolute;
+top: 0px;
+left: -15px;
+}
+  
+ `
 
 export default  class App extends React.Component {
   state = {
     inputNome: '',
     inputTexto: '',          
     whattsState: [
-      { id: 0, nome: 'a0', texto: " " },
+      { id: 0, nome: '', texto: " " },
     
     ]
   }
@@ -79,8 +160,8 @@ export default  class App extends React.Component {
     this.setState({ inputTexto: event.target.value })
   }
 
-  addTeacher = () => {
-    // Criamos a nova pessoa instrutora pegando as infos dos inputs
+  addTexto = () => {
+  
     const newTeacher = {
       id: Math.random(),
       nome: this.state.inputNome,
@@ -95,33 +176,44 @@ export default  class App extends React.Component {
     this.setState({ inputNome: '', inputTexto: '' })
   }
 
-  deleteTeacher = (idDaPessoaInstrutoraParaApagar) => {
+  deleteTexto = (idDaPessoa) => {
     const copia = [...this.state.whattsState]
 
-    const newTeacherList = copia.filter((teacher) => {
-      return teacher.id !== idDaPessoaInstrutoraParaApagar
+    const newTextoList = copia.filter((text) => {
+      return text.id !== idDaPessoa
     })
 
-    this.setState({ teacherState: newTeacherList })
+    this.setState({ whattsState: newTextoList })
   }
+
+
 
   render() {
     const saida = this.state.whattsState.map((entrada) => {
 
-      if ( entrada.nome === 'a0') {
+      if ( entrada.nome === '') {
         return (
-          <h2>Olá ! digite uma mensagem .</h2>
+          <div>  <h2>Olá ! digite uma mensagem.  <Botao2 onClick={this.deleteTexto(entrada.id)}></Botao2>  </h2>
+          
+          </div>// mensagem desativada!!!
+        
+          
         )
 
-      }  else if ( entrada.nome === 'eu') {
+      }  else if ( entrada.nome.toLocaleLowerCase() === 'eu') {
   return (
     <TeacherCard key={entrada.id}>
-           <Titulo>
-              <AgeText></AgeText>
-                   <button onClick={() => this.deleteTeacher(entrada.id)}>x </button>
-            </Titulo>
+          <Titulo2>
+            
+                  <Titulo3>
+                         <Botao2 onClick={() => this.deleteTexto(entrada.id)}>x</Botao2> 
+                         <AgeText>{}</AgeText>
+                  </Titulo3>
+                  <Afeter1></Afeter1>  
+                  
+            </Titulo2>
         
-            <div>
+            <div >
                 <p>{entrada.texto}</p>
         </div>
   
@@ -129,17 +221,20 @@ export default  class App extends React.Component {
   )
 }   else if (entrada.nome !== 'eu') {
                    return (
-                       <TeacherCard key={entrada.id}>
-
+                       <TeacherCard2 key={entrada.id}>
+                          
                              <Titulo>
-                                <AgeText>{entrada.nome}</AgeText>
-                                     <button onClick={() => this.deleteTeacher(entrada.id)}>X</button>
-                               </Titulo>
+                                <Afeter2></Afeter2>
+                                        <Titulo3>
+                                            <AgeText>{entrada.nome}</AgeText>
+                                               <Botao2 onClick={() => this.deleteTexto(entrada.id)}>x</Botao2> 
+                                          </Titulo3>
+                                       </Titulo>
            
-                        <div>
-                    <p>{entrada.texto}</p>
-               </div>
-    </TeacherCard>
+                                   <div>
+                               <p>{entrada.texto}</p>
+                          </div>
+              </TeacherCard2>
   )
 
 }
@@ -151,15 +246,18 @@ export default  class App extends React.Component {
     return (
 <MainContainer>
 <div>
-       <Main>
-       {saida}
+  <Header>
+<h2>Zap-Labenu</h2>
+      </Header>
+           <Main>
+             {saida}
      
-       </Main>
+          </Main>
      <Footer>
      
       <Input
         placeholder={'Nome'}
-        value={this.state.inputNome.toLowerCase()}
+        value={this.state.inputNome}
         onChange={this.guardaNome}
       />
       <Input
@@ -167,7 +265,8 @@ export default  class App extends React.Component {
         value={this.state.inputTexto.toLocaleLowerCase()}
         onChange={this.guardaTexto}
       />
-      <button onClick={this.addTeacher}>Adicionar</button>
+        <Botao onClick={this.addTexto}>Enviar</Botao>
+
      </Footer>
  
       
@@ -180,3 +279,7 @@ export default  class App extends React.Component {
 }
 
 
+/**====================================================================================================== */
+
+
+// link do surge : bright-coat.surge.sh
