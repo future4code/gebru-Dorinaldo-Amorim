@@ -18,13 +18,21 @@ render() {
 
 <Conteiner>
 <h1>ETAPA 2 - INFORMAÇÕES DO ENSINO SUPERIOR</h1>
-    <Formulaio>
-        <label for="nome">5. Qual curso?</label>
-            <input type="text" name="nome" id="nome"></input>
+  
 
-             <label for="c">6. Qual a unidade de ensino?</label>
-            <input type="text" name="c" id="c"></input>
-        </Formulaio>
+        <form>
+
+        <label>5. Qual curso?
+    <input type="text" name="name" />
+  </label>
+  <input type="submit" value="Enviar" />
+
+  <label>
+  6. Qual a unidade de ensino
+    <input type="text" name="name" />
+  </label>
+  <input type="submit" value="Enviar" />
+        </form>
 
 </Conteiner>
 

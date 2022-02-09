@@ -18,13 +18,18 @@ render() {
 
 <Conteiner>
     <h1>ETAPA 3 - INFORMAÇÕES GERAIS DE ENSINO</h1>
-<Formulaio>
-            <label for="a">5. Por que você não terminou um curso de graduação?</label>
-            <input type="text" name="a" id="a"></input>
+<form>
+<label>5. Por que você não terminou um curso de graduação?
+    <input type="text" name="name" />
+  </label>
+  <input type="submit" value="Enviar" />
 
-            <label for="b">6. Você fez algum curso complementar?</label>
-            <input type="text" name="b" id="b"></input>
-</Formulaio>
+  <label>
+  6. Você fez algum curso complementar?
+    <input type="text" name="name" />
+  </label>
+  <input type="submit" value="Enviar" />
+</form>
 
 
 </Conteiner>

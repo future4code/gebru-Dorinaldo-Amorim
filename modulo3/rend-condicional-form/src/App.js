@@ -8,12 +8,9 @@ import Final from './componete/Final';
 
 export default class App extends React.Component {
   state = {
-    etapa: 1,
+    etapa: 1
   }
 
-  irParaProximaEtapa = () => {
-    this.setState({etapa : this.state.etapa += 1});
-   }
 
    renderizaEtapa = () => {
   
@@ -24,13 +21,19 @@ export default class App extends React.Component {
 
   }
 
+  
+  irParaProximaEtapa = () => {
+    this.setState({ etapa: this.state.etapa + this.state.etapa +1})
+   }
+
 render() {
 
 
   return (
 
       <div>
-          {this.renderizaEtapa()}
+       
+               {this.renderizaEtapa()}
             <button onClick={this.irParaProximaEtapa()}>Próxima Etapa</button>
       </div>
 
