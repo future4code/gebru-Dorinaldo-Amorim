@@ -22,6 +22,7 @@ class App extends React.Component {
     state = {
       tarefas: [
         { id: Date.now(), texto: 'corrida matinal', completa: true }
+     
       ],
       inputValue: '',
       filtro: 'completas'
@@ -36,19 +37,42 @@ class App extends React.Component {
   };
 
   onChangeInput = (event) => {
-
+    this.setState({inputValue: event.target.value})
   }
 
   criaTarefa = () => {
 
+    const novaTarefa = {
+      id : Date.now(), 
+      texto: this.state.inputValue,
+      completa: false
+    }
+
+    const novaListaDeTarefa = [...this.state.tarefas, novaTarefa]
+    this.setState({ tarefas : novaListaDeTarefa})
+    this.setState({inputValue: ''})
+    console.log(this.statetarefas)
   }
 
   selectTarefa = (id) => {
+    const newtarefas = this.state.tarefas.map(( tarefa) => {
+      if (id === tarefa.id) {
+        const listaDeTarefas = {
+          ...tarefa , 
+          completa : !tarefa.completa
+        }
+        return listaDeTarefas
 
+      } else {
+        return tarefa
+      }
+    }) 
+    this.setState({tarefas: newtarefas})
+    console.log(this.state.tarefas)
   }
 
   onChangeFilter = (event) => {
-
+    this.setState({filtro: event.target.value})
   }
 
   render() {
