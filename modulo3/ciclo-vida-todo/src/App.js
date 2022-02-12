@@ -7,6 +7,12 @@ const TarefaList = styled.ul`
   width: 200px;
 `
 
+const ListaTarefas = styled.div`
+display: flex;
+justify-content: space-between;
+width: 250px;
+`
+
 const Tarefa = styled.li`
   text-align: left;
   text-decoration: ${({completa}) => (completa ? 'line-through' : 'none')};
@@ -16,6 +22,9 @@ const InputsContainer = styled.div`
   display: grid;
   grid-auto-flow: column;
   gap: 10px;
+`
+const button = styled.button`
+height: 4%;
 `
 
 class App extends React.Component {
@@ -29,11 +38,19 @@ class App extends React.Component {
     }
 
   componentDidUpdate() {
-
+    const tarefas = this.state.tarefas;
+      localStorage.setItem( 'tarefas', JSON.stringify(tarefas));
   };
 
   componentDidMount() {
+    if (localStorage.getItem('tarefas')){
+      const tarefasLS= localStorage.getItem('tarefas');
+        const tarefasObjeto = JSON.parse(tarefasLS);
 
+          this.setState({
+            tarefas: tarefasObjeto
+          });
+    }
   };
 
   onChangeInput = (event) => {
@@ -75,6 +92,10 @@ class App extends React.Component {
     this.setState({filtro: event.target.value})
   }
 
+  deleteTarefa = ( idTarefa) => {
+
+  }
+
   render() {
     const listaFiltrada = this.state.tarefas.filter(tarefa => {
       switch (this.state.filtro) {
@@ -112,7 +133,12 @@ class App extends React.Component {
                 completa={tarefa.completa}
                 onClick={() => this.selectTarefa(tarefa.id)}
               >
-                {tarefa.texto}
+                <ListaTarefas>
+                {tarefa.texto } 
+                  <div>
+                  <button onClick={() => this.deleteTarefa(tarefa.id)}>  X</button>
+                  </div>
+                </ListaTarefas>
               </Tarefa>
             )
           })}
@@ -123,3 +149,7 @@ class App extends React.Component {
 }
 
 export default App
+
+
+
+//    red-bag.surge.sh
