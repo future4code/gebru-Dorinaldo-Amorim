@@ -1,18 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
-import './App.css';
+import Imagen from './img/a.png';
 
 
-const Div = styled.div`
+const Div =styled.div`
 text-align: center;
-`
+background-image: url(${Imagen});
+height: 98vh;
+color: white ;
 
-function App() {
-  return (
-    <Div >
-   <p>olá mundo</p>
-    </Div>
-  );
+`
+export default  class App extends React.Component {
+
+
+
+
+  render() {
+    return (
+      <Div >
+     
+     <p>olá mundo</p>
+      </Div>
+    );
+  }
+
 }
 
-export default App;
+
