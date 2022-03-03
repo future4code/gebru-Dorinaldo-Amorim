@@ -2,9 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Imagen from './img/a.png';
 import Pagina1 from './componentes/Pagina1';
-import Pagina2 from './componentes/Pagina2';
-
-
+import Users from './componentes/usuario';
 
 const Conteiner =styled.div`
 text-align: center;
@@ -19,6 +17,15 @@ const Div = styled.div`
   border: 2px solid white;
   padding: 2%;
   width: 45%;
+  margin: auto;
+  height: 80%;
+  border-radius: 15px;
+  
+`
+const Div2 = styled.div`
+  border: 2px solid white;
+  padding: 2%;
+  width: 98%;
   margin: auto;
   height: 80%;
   border-radius: 15px;
@@ -54,13 +61,16 @@ selecaoDeBOtao = () => {
   render() {
     return (
       <Conteiner >
-     
-        <Div>
-          
-          
-           {this.selecaoDeBOtao()} 
-            {this.state.pag === 1? <Pagina1 /> : <Pagina2 />  }
+
+        <Div>          
+           
+             <Div2>
+             {this.state.pag === 1? <Pagina1 /> : <Users />  }
+             </Div2>
+             {this.selecaoDeBOtao()} 
         </Div>
+     
+       
       </Conteiner>
     );
   }
