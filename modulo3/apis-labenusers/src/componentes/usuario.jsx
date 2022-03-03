@@ -46,8 +46,8 @@ class Users extends React.Component {
   }
 
   handleUserDeletion = userId => {
-    const confirmacao= confirm("Tem certeza que deseja apagar o usuário?")
-    if (confirmacao) {
+     // eslint-disable-next-line no-restricted-globals
+       if (confirm("Tem certeza que deseja apagar o usuário?")) {
       axios
         .delete(
           `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${userId}`,
@@ -55,7 +55,7 @@ class Users extends React.Component {
         )
         .then(() => {
           this.fetchUsersList();
-          alert("Usuário apagado com sucesso!");
+          alert("Usuário esta sendo apagado!");
        
         })
         .catch(e => {
