@@ -6,12 +6,12 @@ import Foto from './img/logo mensagem.png';
 
 
 
-const MainContainer = styled.div`
+const MainContainer =styled.div`
 height: 100vh;
    display: flex;
   justify-content: center;
   flex-direction: column;
-  /* align-items: center; */
+
   background-color: #282c34;
   padding: 0 10vw;
    margin:  auto; 
@@ -130,7 +130,7 @@ right: -15px;
 }
 
  `
- const Afeter2 = styled.div`
+ const Afeter2 =styled.div`
  &:after {
 	content: '';
 	border: 15px solid transparent;
