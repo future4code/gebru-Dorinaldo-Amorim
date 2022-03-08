@@ -8,9 +8,8 @@ import UserDetail from "./Pagina2";
 
 
 const DeleteButton = styled.span`
-   padding-left: 8px;
+  padding-left: 8px;
   color: red;
-  border: 2px solid white;
   height: 80%;
   border-radius: 15px;
   cursor: pointer;
