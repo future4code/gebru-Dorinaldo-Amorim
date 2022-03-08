@@ -16,6 +16,16 @@ const DeleteButton = styled.span`
   cursor: pointer;
   
 `
+const Div =styled.div`
+ display: flex;
+ justify-content: space-between;
+
+`
+const Linha =styled.li`
+align-items: center;
+width: 60%;
+margin-left: 20%;
+`
 
 const axiosConfig = {
   headers: {
@@ -105,15 +115,25 @@ class Users extends React.Component {
               {this.state.usersList.length === 0 && <div>Carregando...</div>}
               {this.state.usersList.map(user => {
                 return (
-                  <li>
-                    <span onClick={() => this.changePage(user.id)}>
-                      {user.name}
-                    </span>
-                    <DeleteButton
-                      onClick={() => this.handleUserDeletion(user.id)}
-                    >    X
-                    </DeleteButton>
-                  </li>
+               
+                  <Linha>
+                       <Div>
+                        <div>
+                          <span onClick={() => this.changePage(user.id)}>
+                           {user.name}
+                         </span>
+                        </div>
+                    <div>
+                      <DeleteButton
+                         onClick={() => this.handleUserDeletion(user.id)}
+                           >    X
+                       </DeleteButton>
+                    </div>                              
+                      </Div>
+                      <hr />
+                  </Linha>
+            
+                  
                 );
               })}
             </ul>
