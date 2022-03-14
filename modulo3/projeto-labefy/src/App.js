@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import axios from "axios";
 import Plylistas from './components/myPlylist';
+import Pagina1 from "./components/criandoPlylists";
 
 const Conteiner =styled.div`
 display: grid;
@@ -51,6 +52,10 @@ export default  class App extends React.Component {
     
   
       }
+
+      mudarPage = ( )=> {
+        this.setState({ currentPage: 2})
+      }
     
 
     render (){
@@ -60,18 +65,19 @@ export default  class App extends React.Component {
                 <Nav>
                    <ul>
                        <li onClick={''}>Home</li>
-                       <li onClick={''}>criar plylists</li>
+                       <li onClick={this.mudarPage}>plylists</li>
                        <li onClick={''}>musicas</li>
                    </ul>
 
                   </Nav>
                 
                   <div>
-                        { <Plylistas/>}
-
+                  {this.state.currentPage === 1? <Pagina1 /> : <Plylistas />  }
                   </div>
               </Main>
-              <footer>oi...</footer>
+              <footer>
+                <audio src='http://spoti4.future4.com.br/10.mp3' controls/>
+              </footer>
 
 
           </Conteiner>

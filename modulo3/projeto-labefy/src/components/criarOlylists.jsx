@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import plylistDetail from "./criarOlylists"
+
 
 const axiosConfig = {
   headers: {
@@ -16,17 +16,17 @@ state={
  }
 
 componentDidMount() {
-  this.getUserDetail();
+  this.getplylistDetail();
 }
 
-getUserDetail =() => {
+getplylistDetail =() => {
   axios
     .get(
-      `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props. plylistsId}`,
+      `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props.plylistsId}`,
       axiosConfig
     )
       .then(response => {
-        this.setState({ userDetail : response.data});
+        this.setState({ plylistDetail : response.data});
       })
       .catch(error => {
         alert(`Nenhum dado encontrado! `)
@@ -92,7 +92,7 @@ render() {
             onChange={this.handleNameChange}
           />
         
-          <button onClick={this.handleCreateUser}>Salvar edição</button>
+          <button onClick={this.handleCreatePlylist}>Salvar edição</button>
         </div>
       );
 
@@ -100,13 +100,13 @@ render() {
     <div>
          <p>criar plylist </p>
             <div>
-              <p>{this.state.userDetail.name}</p>
+              <p>{this.state.plylistDetail.name}</p>
               
                 </div>
                  <div>{userEdition}</div>
                 <hr />
               <button onClick={this.props.changePage}>
-         Voltar para lista de usuários        </button>
+         Voltar para plylist        </button>
        </div>
  
   );
