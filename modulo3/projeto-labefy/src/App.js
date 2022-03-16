@@ -1,86 +1,58 @@
 import React from 'react';
 import styled from "styled-components";
-import axios from "axios";
-import Plylistas from './components/myPlylist';
-import Pagina1 from "./components/criandoPlylists";
+import Header from './components/Header';
+import PlaylistCreationPage from './components/PlaylistCreationPage';
+import PlaylistManagerPage from './components/PlaylistManagerPage';
 
-const Conteiner =styled.div`
-display: grid;
-grid-template-rows: 6fr 1fr;
-height: 100vh;
-`
-const Nav =styled.nav`
-background-color: rgb(56, 56, 56);
-color: orange;
-height: 100%;
+const AppContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: beige;
 `
 
-const Main = styled.main`
-display: grid;
-grid-template-columns: 1fr 5fr;
-`
 
-const axiosConfig = {
-    headers: {
-      Authorization: "dorinaldo-amorim-gebru",
-    
-    }
-  };
-  
+class App extends React.Component {
+  state = {
+    currentPage: "playlistCreationPage"
+  }
 
-export default  class App extends React.Component {
-    state = {
-        minhasPlylists: [],
-        currentPage: 1,
-        plylistsId: '',
-        nomePlylits: '',
+  changePage = (currentPage) => {
+    this.setState({currentPage: currentPage})
+  }
+
+  render () {
+    const renderCurrentPage = () => {
+      if (this.state.currentPage === "playlistCreationPage") {
+        return <PlaylistCreationPage />
+      } else if (this.state.currentPage === "playlistManagerPage") {
+        return <PlaylistManagerPage />
+      }
     }
 
-    componentDidMount() {
-        this.myPlylists();
-      }
-
-      myPlylists= () => {
-        axios
-        .get(
-          "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
-          axiosConfig
-        )
-        .then(response => {
-            this.setState({ minhasPlylists: response.data });
-          })
-    
-  
-      }
-
-      mudarPage = ( )=> {
-        this.setState({ currentPage: 2})
-      }
-    
-
-    render (){
-        return(
-          <Conteiner>
-              <Main>
-                <Nav>
-                   <ul>
-                       <li onClick={''}>Home</li>
-                       <li onClick={this.mudarPage}>plylists</li>
-                       <li onClick={''}>musicas</li>
-                   </ul>
-
-                  </Nav>
-                
-                  <div>
-                  {this.state.currentPage === 1? <Pagina1 /> : <Plylistas />  }
-                  </div>
-              </Main>
-              <footer>
-                <audio src='http://spoti4.future4.com.br/10.mp3' controls/>
-              </footer>
-
-
-          </Conteiner>
-      );
-    }
+    return (
+      <AppContainer>
+        <Header 
+          changePage={this.changePage}
+        />
+        {renderCurrentPage()}
+      </AppContainer>
+    );
+  }
 }
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+//Parte 1 - https://www.loom.com/share/f210c6429eab46d3a1ed6526b7fff152
+//Parte 2 - https://www.loom.com/share/214a51e12dd548f7bd1f37b532d7b884
+//Parte 3 - https://www.loom.com/share/d6d7dd1f58214b2ab087b997f946d823
