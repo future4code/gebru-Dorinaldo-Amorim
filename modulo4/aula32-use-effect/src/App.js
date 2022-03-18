@@ -14,7 +14,11 @@ const Divi =styled.div`
     font-family: sans-serif;
     text-align: center;
     justify-content: space-between;
-    padding-top: 15%;
+    padding: 15% 10% 0;
+`
+const Select =styled.select`
+border-radius: 15px;
+height: 8%;
 `
 
 export default function App () {
@@ -58,10 +62,9 @@ export default function App () {
 
     return (
         <Divi>
-            <div></div>
-            <div> {/* evento onChange chama função toda vez que o usuário 
+            <div>{/* evento onChange chama função toda vez que o usuário 
         escolhe um novo pokemon no dropdown */}
-        <select onChange={changePokeName}>
+        <Select onChange={changePokeName}>
           <option value={""}>Nenhum</option>
           {/* renderizando a lista de pokemons como opções do select */}
           {pokeList.map(pokemon => {
@@ -71,17 +74,25 @@ export default function App () {
               </option>          
             );
           })}
-        </select>
+        </Select>
+        </div>
+            <div> 
         {/* expressão booleana que renderiza o componente PokeCard,
         caso o valor de pokeName, no estado, seja true */}
-        {pokeName && <PokeCard pokemon={pokeName} />}</div>
+        {pokeName && <PokeCard pokemon={pokeName} />}
+        </div>
 
 
 
 
-        <div> {/* evento onChange chama função toda vez que o usuário 
+        <div> 
+        {/* expressão booleana que renderiza o componente PokeCard,
+        caso o valor de pokeName, no estado, seja true */}
+        {pokeName2 && <PokeCard pokemon={pokeName2} />}</div>
+        <div>
+          {/* evento onChange chama função toda vez que o usuário 
         escolhe um novo pokemon no dropdown */}
-        <select onChange={changePokeName2}>
+        <Select onChange={changePokeName2}>
           <option value={""}>Nenhum</option>
           {/* renderizando a lista de pokemons como opções do select */}
           {pokeList2.map(pokemon => {
@@ -91,11 +102,8 @@ export default function App () {
               </option>
             );
           })}
-        </select>
-        {/* expressão booleana que renderiza o componente PokeCard,
-        caso o valor de pokeName, no estado, seja true */}
-        {pokeName2 && <PokeCard pokemon={pokeName2} />}</div>
-        <div></div>
+        </Select>
+        </div>
 
         </Divi>
     )
