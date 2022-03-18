@@ -2,6 +2,20 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 import axios from "axios";
 import PokeCard from "./components/PokeCard/PokeCard";
+import styled from 'styled-components';
+import Img from "./img/arena.png"
+
+
+
+const Divi =styled.div`
+   background-image: url(${Img});
+   height: 69vh;
+    display: flex;
+    font-family: sans-serif;
+    text-align: center;
+    justify-content: space-between;
+    padding-top: 15%;
+`
 
 export default function App () {
   const [pokeList,setpokeList]=useState([])
@@ -22,6 +36,7 @@ export default function App () {
         // função que está setando no estado os 151 pokemons
    
         setpokeList(res.data.results );
+        setpokeList2(res.data.results );
        })
       .catch(err => {
         console.log(err);
@@ -33,11 +48,17 @@ export default function App () {
   setpokeName(event.target.value)
   };
 
+  const changePokeName2 = event => {
+    setpokeName2(event.target.value)
+    };
+  
+
 
   
 
     return (
-          <div className="App">
+        <Divi>
+            <div></div>
             <div> {/* evento onChange chama função toda vez que o usuário 
         escolhe um novo pokemon no dropdown */}
         <select onChange={changePokeName}>
@@ -47,7 +68,7 @@ export default function App () {
             return (
               <option key={pokemon.name} value={pokemon.name}>
                 {pokemon.name}
-              </option>
+              </option>          
             );
           })}
         </select>
@@ -56,7 +77,27 @@ export default function App () {
         {pokeName && <PokeCard pokemon={pokeName} />}</div>
 
 
-      </div>
+
+
+        <div> {/* evento onChange chama função toda vez que o usuário 
+        escolhe um novo pokemon no dropdown */}
+        <select onChange={changePokeName2}>
+          <option value={""}>Nenhum</option>
+          {/* renderizando a lista de pokemons como opções do select */}
+          {pokeList2.map(pokemon => {
+            return (
+              <option key={pokemon.name} value={pokemon.name}>
+                {pokemon.name}
+              </option>
+            );
+          })}
+        </select>
+        {/* expressão booleana que renderiza o componente PokeCard,
+        caso o valor de pokeName, no estado, seja true */}
+        {pokeName2 && <PokeCard pokemon={pokeName2} />}</div>
+        <div></div>
+
+        </Divi>
     )
 }
 

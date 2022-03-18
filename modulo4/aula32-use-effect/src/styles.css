@@ -1,7 +1,11 @@
+
+
 .App {
+    /* background-image: url(${Img}); */
+    display: flex;
     font-family: sans-serif;
     text-align: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 10vh;
   }
   

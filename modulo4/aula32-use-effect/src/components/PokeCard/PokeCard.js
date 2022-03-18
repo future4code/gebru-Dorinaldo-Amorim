@@ -28,9 +28,9 @@ export default function PokeCar (props)  {
  
   return(
           <div>
-        <p>{pokemon.name}</p>
-        <p>{pokemon.weight} Kg</p>
-        {pokemon.types && <p>{pokemon.types[0].type.name}</p>}
+        <p class="paragraf"> {pokemon.name} </p>
+        <p class="paragraf">{pokemon.weight} Kg</p>
+        {pokemon.types && <p class="paragraf">{pokemon.types[0].type.name}</p>}
         {pokemon.sprites && (
           <img id='img' src={pokemon.sprites.front_default} alt={pokemon.name} />
         )}
