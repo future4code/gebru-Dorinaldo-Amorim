@@ -8,7 +8,7 @@ const CardPerfils = styled.div`
 `
 
 
-const CardPerfil =() => {
+const Matchers =() => {
     const [cardPerfil,setcardPerfil]=useState({})
 
 
@@ -21,11 +21,11 @@ const CardPerfil =() => {
     const getPosts = () => {
         // função axios que está batendo na API e buscando 151 pokemons
         axios
-          .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/darvas/person")
+          .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/dorinaldo-gebru/person")
           .then(res => {
             // função que está setando no estado os 151 pokemons
        
-            setcardPerfil(res.data.results );
+            setcardPerfil(res.data.matches );
          
            })
           .catch(err => {
@@ -47,4 +47,4 @@ const CardPerfil =() => {
     );
   }
 
-  export default CardPerfil;
+  export default Matchers;
