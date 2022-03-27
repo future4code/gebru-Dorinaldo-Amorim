@@ -1,31 +1,22 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
-
-
-const CardPerfils = styled.div`
-
-`
-
+import {Sessao, ImgPhoto2, Nome, Bio, Header, Conteine, CardMatchers} from './styled'
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
 const Matchers =() => {
-    const [cardPerfil,setcardPerfil]=useState({})
-
-
-     
+    const [matches,setmatches]=useState({})
+    
     useEffect (() => {
         getPosts()
     },[])
   
- 
-    const getPosts = () => {
-        // função axios que está batendo na API e buscando 151 pokemons
-        axios
-          .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/dorinaldo-gebru/person")
-          .then(res => {
-            // função que está setando no estado os 151 pokemons
+     const getPosts = () => {
        
-            setcardPerfil(res.data.matches );
+        axios
+          .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/dorinaldo-gebru/matches")
+          .then(res => {
+          
+            setmatches(res.data.matches );
          
            })
           .catch(err => {
@@ -33,17 +24,28 @@ const Matchers =() => {
           });
       };
     
-      console.log(cardPerfil, '007')
-  
+
     return (
-    <CardPerfils >
-     
+    <div>
+      <Conteine>
+          <Header>
+            <div> <PersonAddIcon/> </div>
+            <div><h2>Astro Match</h2></div>
+            <div></div>
+          </Header> <hr/> 
+        {matches ? <CardMatchers>{matches.map((matc) => {
+        return (
+          <Sessao id={matc.id}>
+            <ImgPhoto2 src={matc.photo}/>
+            <div><Nome>{matc.name} </Nome> </div>
+          </Sessao>
+        )
+      })} </CardMatchers> : <CardMatchers><p>carregando...</p> </CardMatchers>}
         <div></div>
-        <div>{cardPerfil}</div>
-        <div></div>
-   
+   {console.log(matches, '007')}
+      </Conteine>
     
-    </CardPerfils>
+    </div>
     );
   }
 

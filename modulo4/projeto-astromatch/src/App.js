@@ -1,22 +1,17 @@
-import React, { useState, useEffect} from 'react';
-import Matchers from './components/Matchers';
-import Perfil from './components/perfil'
-
-
+import React from 'react';
+// import Matchers from './components/Matchers';
+import Perfil from './components/perfil';
 import './App.css';
+// import { AccessAlarm, ThreeDRotation } from '@material-ui/icons';
 
 const App= () => {
 
   return (
-  < >
-    <p>olá mundo</p>
-    <hr/>
    
-   <Perfil/>
-   
-
-  </>
-  );
+       <Perfil/>
+    // <Matchers/>
+ 
+   );
 }
 
 export default App;
