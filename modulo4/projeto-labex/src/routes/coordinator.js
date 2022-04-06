@@ -10,3 +10,12 @@ export const goBack = (navigate) => {
 export const goToHomePage = (navigate) => {
     navigate("/")
 }
+
+export const goToTripDetails = (navigate) => {
+    navigate("/tripDetails");
+  };
+  
+  export const goToLogin = (navigate) => {
+    navigate("/login");
+  };
+  
