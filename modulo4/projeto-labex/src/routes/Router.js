@@ -7,7 +7,7 @@ import LoginPage from '../pages/LoginPage/LoginPage'
 import AdminHomePage from '../pages/AdminHomePage/AdminHomePage'
 import CreateTripPage from '../pages/CreateTripPage/CreateTripPage'
 import TripDetailsPage from '../pages/TripDetailsPage/TripDetailPage'
-import ErrorPage from '../pages/ErrorPage/ErrorPage'
+import ErrorPage from '../pages/pageErro/ErrorPage'
 
 const Router = () => {
     return (
