@@ -1,12 +1,12 @@
-import React from "react";
-import GlobalStyle from "./globalStyles";
-import Router from "./routes/Router";
+import React from "react"
+import GlobalStyle from "./globalStyles"
+import Router from "./routes/Router"
 
-const App = () => {
+function App() {
   return (
-    <div>
+    <div>olá mundo
       <GlobalStyle />
-     <Router/>
+      <Router />
     </div>
   )
 }
