@@ -7,4 +7,5 @@ export const CardContainer = styled.div`
     margin: 10px 0;
     max-width: 500px;
     width: 100%;
+    background-color: white;
 `

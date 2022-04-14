@@ -1,9 +1,11 @@
 import { createGlobalStyle } from 'styled-components'
+import Imagen from './img/02.png'
 
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 30px 0;
     padding: 0;
+    background-image: url(${Imagen});
     width: 100vw;
     min-height: 100vh;
     display: flex;
@@ -55,7 +57,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2, b {
-    color: slategray;
+    color: black;
   }
 
   h1 {

@@ -10,6 +10,7 @@ export const CardContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 460px;
+    background-color: white;
     &:hover{
         cursor: pointer;
         background-color: #b6d4e3;

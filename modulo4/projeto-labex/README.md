@@ -13,6 +13,6 @@ Projetado em React.js, utilizando Hooks, React Router e Token para Autenticaçã
 
 ## Link do surge
 
-http://dorinaldo-gebru-labex.surge.sh
+http://dorinaldoprojlabex.surge.sh
 
 

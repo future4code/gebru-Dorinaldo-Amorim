@@ -6,6 +6,7 @@ export const CardContainer = styled.div`
     border-radius: 4px;
     margin: 10px 0;
     max-width: 500px;
+    background-color: white;
 `
 
 export const ButtonsContainer = styled.div`
