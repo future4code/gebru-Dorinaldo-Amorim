@@ -11,9 +11,11 @@
 
     if (indicadorDeAddTarefa === "taref") {
         listaDeTarefas.push(tarefa)
+        console.log("Tarefa adicionada com sucesso!")
         console.log(`Minhas tarefas: ${listaDeTarefas}`)
+       
     }
 
 /////////////////////////////////////////////////////////////////////////////////////
-//Exer 4
+
 
