@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node ./build/index.js"
+    "start": "tsc && node ./build/index.js",
+    "ex": "tsc && node build/exercicio.js"
   },
   "keywords": [],
   "author": "Dorinaldo Amorim",
