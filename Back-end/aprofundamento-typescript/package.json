@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node ./build/index.js",
-    "ex": "tsc && node build/exercicio.js"
+    " exercicio1": "tsc && node ./exericicio1.js",
+    " exercicio2": "tsc && node ./exericicio2.js",
+    " exercicio3": "tsc && node ./exericicio3.js",
+    " exercicio4": "tsc && node ./exericicio4.js"
   },
   "keywords": [],
   "author": "Dorinaldo Amorim",
