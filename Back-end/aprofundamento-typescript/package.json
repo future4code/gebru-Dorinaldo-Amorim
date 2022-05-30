@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    " exercicio1": "tsc && node ./exericicio1.js",
-    " exercicio2": "tsc && node ./exericicio2.js",
-    " exercicio3": "tsc && node ./exericicio3.js",
-    " exercicio4": "tsc && node ./exericicio4.js"
+    "exercicio01": "clear && tsc && node ./build/exercicio01.js",
+    "exercicio02": "clear && tsc && node ./build/exercicio02.js",
+    "exercicio03": "clear && tsc && node ./build/exercicio03.js",
+    "exercicio04": "clear && tsc && node ./build/exercicio04.js"
+   
   },
   "keywords": [],
   "author": "Dorinaldo Amorim",
