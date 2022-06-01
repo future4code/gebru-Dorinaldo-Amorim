@@ -38,4 +38,4 @@ const posts: Post[] = [
     )
   }
 
-  console.log(buscarPostsPorAutor(posts,"Lord Voldemort"))
+ 

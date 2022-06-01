@@ -1,6 +1,6 @@
 
 //ex.2
-function obterEstatisticas(numeros: number[]): Estatisticas {
+function obterEstatisticas(numeros: number[]): estatisticas {
 
     const numerosOrdenados :number[]= numeros.sort(
         (a, b) => a - b
@@ -12,7 +12,7 @@ function obterEstatisticas(numeros: number[]): Estatisticas {
         soma += num
     }
 
-    const estatisticas: Estatisticas = {
+    const estatisticas: estatisticas = {
         maior: numerosOrdenados[numeros.length - 1],
         menor: numerosOrdenados[0],
         media: soma / numeros.length
@@ -21,13 +21,21 @@ function obterEstatisticas(numeros: number[]): Estatisticas {
     return estatisticas
 }
 
-type Estatisticas = {
+type estatisticas = {
     maior: number,
     menor: number,
     media: number
 }
 
-type AmostraDeIdades = {
-    numeros: number[],
-    obterEstatisticas: (numeros:number[])=> Estatisticas
-}
+
+const amostraDeIdades: number[]= [21, 18, 65, 44, 15, 18] 
+
+
+console.log(obterEstatisticas(amostraDeIdades))
+
+
+
+
+
+
+
