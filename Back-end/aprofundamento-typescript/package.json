@@ -1,0 +1,19 @@
+{
+  "name": "aprofundamento-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "exercicio01": "clear && tsc && node ./build/exercicio01.js",
+    "exercicio02": "clear && tsc && node ./build/exercicio02.js",
+    "exercicio03": "clear && tsc && node ./build/exercicio03.js",
+    "exercicio04": "clear && tsc && node ./build/exercicio04.js"
+   
+  },
+  "keywords": [],
+  "author": "Dorinaldo Amorim",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.7.2"
+  }
+}
