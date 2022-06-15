@@ -1,13 +1,13 @@
-import express from "express";
+import express, { Express, Request, Response } from "express";
 import cors from 'cors';
 import { AddressInfo } from "net";
 import { accounts } from "./accounts";
 
-const app = express();
+const app: Express = express();
 app.use(cors());
 app.use(express.json());
 
-app.post("/users/create", (req, res) => {
+app.post("/users/create", (req: Request, res: Response) => {
     try {
        const { name, CPF, dateOfBirthAsString } = req.body
  
@@ -42,7 +42,7 @@ app.post("/users/create", (req, res) => {
     }
  })
  
- app.get("/users/all", (req, res) => {
+ app.get("/users/all", (req: Request, res: Response) => {
     try {
        if (!accounts.length) {
           res.statusCode = 404
