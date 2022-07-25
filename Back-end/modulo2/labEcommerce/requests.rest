@@ -1,0 +1,67 @@
+GET http://localhost:3005/users
+
+###
+
+POST http://localhost:3005/users
+Content-Type: application/json
+
+{
+   "id": "03",
+   "name":"Paula",
+   "email":"paula@hotmail.com",
+   "password":"123456"
+}
+
+###
+
+DELETE http://localhost:3005
+
+
+
+
+
+
+
+###
+GET http://localhost:3005/products
+
+###
+
+POST http://localhost:3005/products
+Content-Type: application/json
+
+{
+    "id": "03",
+    "name": "sabão",
+    "price": "8",
+    "image_url": ""
+}
+
+###
+
+DELETE http://localhost:3005/character/3
+
+
+
+
+
+
+###
+GET http://localhost:3005/purchases
+
+###
+
+POST http://localhost:3005/purchases
+Content-Type: application/json
+
+{
+    "user_id": "02",
+    "product_id": "02",
+    "price": 7.89,
+    "quantity": 4,
+    "total_price": 30
+}
+
+###
+
+DELETE http://localhost:3005/
