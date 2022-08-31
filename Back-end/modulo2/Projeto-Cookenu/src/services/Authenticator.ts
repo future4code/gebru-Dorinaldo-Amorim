@@ -1,25 +1,23 @@
-import { AuthenticationData } from "../model/types";
 import * as jwt from "jsonwebtoken";
+import { AuthenticationData } from "../model/User";
+import dotenv from "dotenv"
 
-class Authenticator {
-    generateToken = (payload: AuthenticationData) :string => {
-        const token = jwt.sign(
-            payload, 
-            process.env.JWT_KEY as string, 
-            {expiresIn: process.env.JWT_EXPIRES_IN}
-        )
+dotenv.config()
 
-        return token
-    }
+export class Authenticator {
+  public generateToken = (payload: AuthenticationData): string => {
+    const token = jwt.sign(payload,
+      process.env.JWT_KEY as string,
+      { expiresIn: "2h" });
+    
+    return token;
+  };
 
-    getTokenData = (token: string) :AuthenticationData => {
-        const result = jwt.verify(
-            token, 
-            process.env.JWT_KEY as string
-        ) as AuthenticationData
+  public getTokenData = (token: string): AuthenticationData => {
 
-        return result
-    }
+    const payload = jwt.verify(token, process.env.JWT_KEY as string) as jwt.JwtPayload
+    const result: AuthenticationData = { id: payload.id }
+
+    return result
+  }
 }
-
-export default new Authenticator()

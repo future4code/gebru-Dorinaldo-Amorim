@@ -1,57 +1,61 @@
-import { CustomError } from "../error/customError";
-import { EditUserInput, user } from "../model/user";
-import { BaseDatabase } from "./BaseDatabase";
+import { UserRepository } from "../business/UserRepository";
+import { BaseError } from "../Error/BaseError";
+import { Signup, User } from "../model/User";
+import { BaseDataBase } from "./BaseDataBase";
 
-export class UserDatabase extends BaseDatabase {
-  public insertUser = async (user: user) => {
-    try {
-      await UserDatabase.connection
-        .insert({
-          id: user.id,
-          name: user.name,
-          nickname: user.nickname,
-          email: user.email,
-          password: user.password,
-          role: user.role
-        })
-        .into("Auth_users");
-    } catch (error: any) {
-      throw new CustomError(400, error.sqlMessage);
+export class UserDataBase extends BaseDataBase implements UserRepository {
+
+    private static TABLE_NAME = "cookenu_user"
+
+    async signup(signup: Signup): Promise<void> {
+        try {
+            await UserDataBase.connection
+                .insert(signup)
+                .into(UserDataBase.TABLE_NAME)
+
+        } catch (error: any) {
+            throw new BaseError(error.statusCode, error.sqlMessage || error.message)
+        }
     }
-  };
 
-  public editUser = async (user: EditUserInput) => {
-    try {
-      await UserDatabase.connection
-        .update({ name: user.name, nickname: user.nickname })
-        .where({ id: user.id })
-        .into("Auth_users");
-    } catch (error: any) {
-      throw new CustomError(400, error.sqlMessage);
+    async findUserEmail(email: string): Promise<User> {
+        try {
+            const user = await UserDataBase.connection
+                .select(`*`)
+                .where({ email })
+                .into(UserDataBase.TABLE_NAME)
+
+            return user[0]
+
+        } catch (error: any) {
+            throw new BaseError(error.statusCode, error.sqlMessage || error.message)
+        }
     }
-  };
 
-  public findUserByEmail = async (email: string) => {
-    try {
-      const result = await UserDatabase.connection("Auth_users")
-        .select()
-        .where({email});
-      return result[0];
-    } catch (error: any) {
-      throw new CustomError(400, error.sqlMessage);
+    async selectByUser(id: string): Promise<User> {
+        try {
+
+            const user = await UserDataBase.connection
+                .select("id", "name", "email")
+                .where({id})
+                .into(UserDataBase.TABLE_NAME)
+
+            return user[0]
+        } catch (error: any) {
+            throw new BaseError(error.statusCode, error.sqlMessage || error.message)
+        }
     }
-  };
-  
-  public getUserById = async (id: string) => {
-    try {
-      const result = await UserDatabase.connection("Auth_users")
-        .select()
-        .where({id});
-      return result[0];
-    } catch (error: any) {
-      throw new CustomError(400, error.sqlMessage);
+
+    async selectUserById(id: string): Promise<User> {
+        try {
+            const user = await UserDataBase.connection
+                .select("name", "email")
+                .where({ id })
+                .into(UserDataBase.TABLE_NAME)
+
+            return user[0]
+        } catch (error: any) {
+            throw new BaseError(error.statusCode, error.sqlMessage || error.message)
+        }
     }
-  };
-
-
 }

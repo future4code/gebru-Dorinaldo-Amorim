@@ -1,105 +1,146 @@
-import { UserDatabase } from "../data/UserDatabase";
-import { CustomError, InvalidEmail, InvalidName, InvalidPassword, UnathorizedUser, UserNotFound } from "../error/customError";
-import { AuthenticationData } from "../model/types";
 import {
-  UserInputDTO,
-  user,
-  EditUserInputDTO,
-  EditUserInput,
-  LoginUserInputDTO,
-} from "../model/user";
-import Authenticator from "../services/Authenticator";
-import HashManager from "../services/HashManager";
-import IdGenerator from "../services/IdGenerator";
+  invalidAuthenticatorData,
+  invalidToken,
+} from "../Error/AutenticatorError";
+import { BaseError } from "../Error/BaseError";
+import { MissingFieldsToComplete } from "../Error/MissingFieldsToComplete";
+import {
+  invalidEmail,
+  invalidPassword,
+  invalidPasswordCreate,
+  invalidUser,
+  invalidUserEmail,
+} from "../Error/UserError";
+import { Login, Signup, SignupInputDTO } from "../model/User";
+import { Authenticator } from "../services/Authenticator";
+import { HashManager } from "../services/HashManager";
+import { IdGenerator } from "../services/IdGenerator";
+import { UserRepository } from "./UserRepository";
 
 export class UserBusiness {
-  private userDB: UserDatabase
-  constructor(){
-    this.userDB = new UserDatabase()
-  }
-  public createUser = async (input :UserInputDTO) => {
-    let {name , nickname, email, password, role} = input 
+  constructor(private userDataBase: UserRepository) {}
 
-    if (!name || !nickname || !email || !password || !role) {
-      throw new CustomError(422, "Ausência de parâmetro") 
+  async signupBusiness(signup: SignupInputDTO) {
+    try {
+      const { name, email, password } = signup;
+
+      if (!name || !email || !password) {
+        throw new MissingFieldsToComplete();
+      }
+
+      if (!email.includes("@")) {
+        throw new invalidEmail();
+      }
+
+      if (password.length < 6) {
+        throw new invalidPasswordCreate();
+      }
+
+      const findEmail = await this.userDataBase.findUserEmail(email);
+
+      if (findEmail) {
+        throw new invalidUserEmail();
+      }
+
+      const hashManager = new HashManager();
+      const hashPassword = await hashManager.hash(password);
+
+      const id = new IdGenerator().generateId();
+
+      const newSignup: Signup = {
+        id,
+        name,
+        email,
+        password: hashPassword,
+      };
+
+      await this.userDataBase.signup(newSignup);
+
+      const authenticator = new Authenticator();
+      const acessToken = authenticator.generateToken({ id });
+
+      return acessToken;
+    } catch (error: any) {
+        throw new BaseError(error.statusCode, error.sqlMessage || error.message);
     }
-
-    if (role !== "NORMAL" && role !== "ADMIN"){
-      role = "NORMAL"
-    }
-
-    const id = IdGenerator.generateId()
-    const hash = await HashManager.generateHash(password)
-
-    const user :user = {
-      id, 
-      email, 
-      password: hash, 
-      name, 
-      nickname, 
-      role
-    }
-
-    await this.userDB.insertUser(user)
-    const token = Authenticator.generateToken({id, role})
-
-    return token
-  }
-
-  public login = async (input:LoginUserInputDTO) => {
-    let {email, password} = input 
-
-    if(!email || !password) {
-      throw new CustomError(400, "Ausência de parâmetros")
-    }
-
-    const user = await this.userDB.findUserByEmail(email)
-    const hashCompare = await HashManager.compareHash(
-      password, 
-      user.password
-    )
-
-    if(!hashCompare){ 
-      throw new InvalidPassword()
-    }
-
-    const payload :AuthenticationData = {
-      id: user.id, 
-      role: user.role
-    }
-
-    const token = Authenticator.generateToken(payload)
-
-    return token
   }
 
-  public editUser = async (input:EditUserInputDTO, token: string) => {
-    let {name , nickname, id} = input 
+  async loginBusiness(login: Login) {
+    try {
+      const { email, password } = login;
 
-    if (!name || !nickname || !token) {
-      throw new CustomError(422, "Ausência de parâmetro") 
+      if (!email || !password) {
+        throw new MissingFieldsToComplete();
+      }
+
+      const user = this.userDataBase.findUserEmail(email);
+
+      if (!user) {
+        throw new invalidUser();
+      }
+
+      if (!email.includes("@")) {
+        throw new invalidEmail();
+      }
+
+      const hashManager = new HashManager();
+      const passwordIsCorrect = await hashManager.compare(
+        password,
+        (
+          await user
+        ).password
+      );
+
+      const authenticator = new Authenticator();
+      const token = authenticator.generateToken({ id: (await user).id });
+
+      if (!passwordIsCorrect) {
+        throw new invalidPassword();
+      }
+      return token;
+    } catch (error: any) {
+      throw new BaseError(error.statusCode, error.sqlMessage || error.message);
     }
-
-    const userExist = await this.userDB.getUserById(id)
-    if(!userExist){
-      throw new UserNotFound()
-    }
-
-    const tokenData = Authenticator.getTokenData(token)
-    console.log(tokenData)
-
-    if(tokenData.role !== "ADMIN") {
-      throw new UnathorizedUser()
-    }
-
-    const editedUser :EditUserInput = {
-      name, 
-      nickname, 
-      id
-    }
-
-    await this.userDB.editUser(editedUser)
   }
 
-  
+  async findUserBusiness(token: string) {
+    try {
+      if (!token) {
+        throw new invalidToken();
+      }
+
+      const authenticatorData = new Authenticator().getTokenData(token);
+
+      if (!authenticatorData.id) {
+        throw new invalidAuthenticatorData();
+      }
+
+      const user = await this.userDataBase.selectByUser(authenticatorData.id);
+
+
+      return user;
+    } catch (error: any) {
+      throw new BaseError(error.statusCode, error.sqlMessage || error.message);
+    }
+  }
+
+  async getUserByIdBusiness(id: string, token: string) {
+    try {
+      if (!token) {
+        throw new invalidToken();
+      }
+
+      const authenticatorData = new Authenticator().getTokenData(token);
+
+      if (!authenticatorData.id) {
+        throw new invalidAuthenticatorData();
+      }
+
+      const user = await this.userDataBase.selectUserById(id);
+
+      return user;
+    } catch (error: any) {
+      throw new BaseError(error.statusCode, error.sqlMessage || error.message);
+    }
+  }
 }

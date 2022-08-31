@@ -1,5 +1,6 @@
-import app from "./controller/app"
-import { userRouter } from "./controller/userRouter"
+import { app } from "./controller/app";
+import { recipeRouter } from "./controller/router/recipeRouter";
+import { userRouter } from "./controller/router/userRouter";
 
-
-app.use('/user/', userRouter)
+app.use("/cookenu", userRouter)
+app.use("/cookenu", recipeRouter)
