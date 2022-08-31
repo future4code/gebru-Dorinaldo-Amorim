@@ -1,3 +1,4 @@
+import { User } from "../types/User";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase {
@@ -12,5 +13,11 @@ export class UserDatabase extends BaseDatabase {
         password,
       })
       .into(UserDatabase.TABLE_NAME);
+  }
+
+  async findAll(): Promise<User[]> {
+    const users = await UserDatabase.connection(UserDatabase.TABLE_NAME)
+    const result = users.map(user=> new User(user.id, user.name, user.email, user.password))
+    return result
   }
 }
